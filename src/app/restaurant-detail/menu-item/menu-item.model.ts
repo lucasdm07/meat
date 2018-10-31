@@ -4,4 +4,6 @@ export interface MenuItem {
     description: string;
     price: number;
     imagePath: string;
+    hours?: string;
+    about?: string;
 }
