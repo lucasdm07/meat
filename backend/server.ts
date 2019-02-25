@@ -17,6 +17,7 @@ server.use(middlewares);
 // You can use the one used by JSON Server
 server.use(jsonServer.bodyParser);
 
+// tslint:disable-next-line: comment-format
 //middleware para login
 server.post('/login', handleAuthentication);
 server.use('/orders', handleAuthorization);

@@ -1,6 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule, LOCALE_ID } from '@angular/core';
-import { HttpModule } from '@angular/http';
+import { NgModule, LOCALE_ID, ErrorHandler } from '@angular/core';
 import { RouterModule, PreloadAllModules } from '@angular/router';
 import { ROUTES } from 'app.routes';
 import { FormsModule, ReactiveFormsModule} from '@angular/forms';
@@ -20,6 +19,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 import { LoginComponent } from './security/login/login.component';
+import { HttpClientModule } from '@angular/common/http';
+import { UserDetailComponent } from './header/user-detail/user-detail.component';
+import { AplicationErrorHandler } from './app.error-handler';
 
 
 @NgModule({
@@ -36,18 +38,21 @@ import { LoginComponent } from './security/login/login.component';
     ReviewsComponent,
     OrderSummaryComponent,
     NotFoundComponent,
-    LoginComponent
+    LoginComponent,
+    UserDetailComponent
   ],
   imports: [
     BrowserModule,
-    HttpModule,
+    HttpClientModule,
     FormsModule,
     SharedModule.forRoot(),
     ReactiveFormsModule,
     BrowserAnimationsModule,
     RouterModule.forRoot(ROUTES, {preloadingStrategy: PreloadAllModules})
   ],
-  providers: [{provide: LocationStrategy, useClass: HashLocationStrategy}, {provide: LOCALE_ID, useValue: 'pt-BR'}],
+  providers: [{provide: LocationStrategy, useClass: HashLocationStrategy},
+              {provide: LOCALE_ID, useValue: 'pt-BR'},
+              {provide: ErrorHandler, useClass: AplicationErrorHandler}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -6,9 +6,13 @@ import { ReviewsComponent } from 'app/restaurant-detail/reviews/reviews.componen
 import { MenuComponent } from 'app/restaurant-detail/menu/menu.component';
 import { OrderSummaryComponent } from 'app/order-summary/order-summary.component';
 import { NotFoundComponent } from 'app/not-found/not-found.component';
+import { LoginComponent } from 'app/security/login/login.component';
+import { LoggedinGuard } from 'app/security/loggedin.guard';
 
 export const ROUTES: Routes = [
     {path: '', component: HomeComponent},
+    {path: 'login/:to', component: LoginComponent},
+    {path: 'login', component: LoginComponent},
     // esse era o jeito antigo antes do carregamento tardio {path: 'about', component: AboutComponent},
     {path: 'about', loadChildren: './about/about.module#AboutModule'},
     {path: 'restaurants', component: RestaurantsComponent},
@@ -21,6 +25,6 @@ export const ROUTES: Routes = [
         ]
     },
     // {path: 'order', component: OrderComponent}
-    {path: 'order', loadChildren: './order/order.module#OrderModule'},
+    {path: 'order', loadChildren: './order/order.module#OrderModule', canLoad: [LoggedinGuard], canActivate: [LoggedinGuard]},
     {path: '**', component: NotFoundComponent}
 ];

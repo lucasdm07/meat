@@ -14,7 +14,7 @@ exports.handleAuthorization = function (req, resp, next) {
                 next();
             }
             else {
-                resp.status(403).json({ message: 'Não autorizado.' });
+                resp.status(403).json({ message: "N\u00E3o autorizado Token. " + token });
             }
         });
     }
@@ -22,6 +22,7 @@ exports.handleAuthorization = function (req, resp, next) {
 function extractToken(req) {
     var token = undefined;
     if (req.headers && req.headers.authorization) {
+        // tslint:disable-next-line: comment-format
         //Autorization: Bearer ZZZ.ZZZ.ZZZ
         var parts = req.headers.authorization.split(' ');
         if (parts.length === 2 && parts[0] === 'Bearer') {

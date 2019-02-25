@@ -1,4 +1,11 @@
 <!-- INÍCIO DO CONTEÚDO -->
+<section class="content-header">
+  <h1>
+
+  </h1>
+</section>
+
+
 <section class="content">
 
   <div class="row">
@@ -26,24 +33,21 @@
           </div>
           <!-- /.box-body -->
           <div class="box-footer detail-footer">
-          <a class="pull-left" routerLinkActive="detail-active"  [routerLink]="['menu']">
-              Menu
-          </a>
-          <a class="pull-right" routerLinkActive="detail-active" [routerLink]="['reviews']">
-              Avaliações
-          </a>
-        </div>
+              <a class="pull-left" routerLinkActive="detail-active" [routerLink]="['menu']">
+                 Menu
+              </a>
+              <a class="pull-right" routerLinkActive="detail-active" [routerLink]="['reviews']">
+                 Avaliações
+              </a>
+          </div>
         </div>
       </div>
       <!-- /.col-xs-12 -->
+
   </div>
 
-
   <div class="row">
-    <!--INÍCIO DO MENU -->
-    <!--<mt-menu></mt-menu>-->
-    <!-- FIM DO MENU -->
-    <router-outlet></router-outlet>
+      <router-outlet></router-outlet>
   </div>
 
 </section>
