@@ -17,7 +17,11 @@ import { OrderSummaryComponent } from './order-summary/order-summary.component';
 import { SharedModule } from './shared/shared.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NotFoundComponent } from './not-found/not-found.component';
-import { LocationStrategy, HashLocationStrategy } from '@angular/common';
+// angular >= 6
+import { LocationStrategy, HashLocationStrategy, registerLocaleData } from '@angular/common';
+import locatePt from '@angular/common/locales/pt';
+registerLocaleData(locatePt, 'pt');
+// angular >= 6
 import { LoginComponent } from './security/login/login.component';
 import { HttpClientModule } from '@angular/common/http';
 import { UserDetailComponent } from './header/user-detail/user-detail.component';
@@ -51,7 +55,7 @@ import { AplicationErrorHandler } from './app.error-handler';
     RouterModule.forRoot(ROUTES, {preloadingStrategy: PreloadAllModules})
   ],
   providers: [{provide: LocationStrategy, useClass: HashLocationStrategy},
-              {provide: LOCALE_ID, useValue: 'pt-BR'},
+              {provide: LOCALE_ID, useValue: 'pt'},
               {provide: ErrorHandler, useClass: AplicationErrorHandler}],
   bootstrap: [AppComponent]
 })
